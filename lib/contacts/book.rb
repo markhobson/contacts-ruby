@@ -1,4 +1,4 @@
-require './contact'
+require_relative 'contact'
 
 module Contacts
   class Book
