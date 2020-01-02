@@ -18,6 +18,10 @@ module Contacts
       end
     end
 
+    def clear
+      @contacts.clear
+    end
+
     def print
       @contacts.each do |contact|
         puts contact.name
@@ -25,6 +29,7 @@ module Contacts
     end
 
     def load(filename)
+      clear
       File.open(filename, "r") do |file|
         file.gets
         file.each_line do |line|
