@@ -4,5 +4,9 @@ module Contacts
       @name = name
       @mobile = mobile
     end
+
+    def to_s
+      "#{@name}, #{@mobile}"
+    end
   end
 end

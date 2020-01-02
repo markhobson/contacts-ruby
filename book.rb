@@ -2,6 +2,8 @@ require './contact'
 
 module Contacts
   class Book
+    include Enumerable
+
     def initialize
       @contacts = []
     end
@@ -10,8 +12,10 @@ module Contacts
       @contacts.push(contact)
     end
 
-    def to_s
-      @contacts.to_s
+    def each
+      @contacts.each do |contact|
+        yield contact
+      end
     end
   end
 end
