@@ -1,5 +1,5 @@
-require './lib/contacts/book'
+require './lib/contacts/manager'
 
 book = Contacts::Book.new
 book.load("book.csv")
-puts book
+Contacts::Manager.new(book).run

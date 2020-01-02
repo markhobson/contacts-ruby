@@ -18,6 +18,12 @@ module Contacts
       end
     end
 
+    def print
+      @contacts.each do |contact|
+        puts contact.name
+      end
+    end
+
     def load(filename)
       File.open(filename, "r") do |file|
         file.gets
