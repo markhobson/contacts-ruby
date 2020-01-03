@@ -22,7 +22,7 @@ module Contacts
       @contacts.clear
     end
 
-    def print
+    def list
       @contacts.each do |contact|
         puts contact.name
       end

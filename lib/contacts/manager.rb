@@ -7,25 +7,25 @@ module Contacts
     end
 
     def run
-      display
+      list
       @running = true
       prompt while @running
     end
 
     private
 
-      def display
+      def list
         puts "== Book =="
-        @book.print
+        @book.list
       end
 
       def prompt
-        print "\n(D)isplay, (L)oad, (S)ave, (Q)uit? "
+        print "\n(L)ist, (O)pen, (S)ave, (Q)uit? "
         case gets.upcase.strip
-          when "D"
-            display
           when "L"
-            load
+            list
+          when "O"
+            open
           when "S"
             save
           when "Q"
@@ -35,11 +35,11 @@ module Contacts
         end
       end
 
-      def load
+      def open
         print "Filename? "
         filename = gets.strip
         @book.load(filename)
-        puts "Loaded #{filename}"
+        puts "Opened #{filename}"
       end
 
       def save
