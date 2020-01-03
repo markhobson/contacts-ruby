@@ -12,5 +12,9 @@ module Contacts
       puts "  Name: #{@name}"
       puts "Mobile: #{@mobile}"
     end
+
+    def <=>(contact)
+      name <=> contact.name
+    end
   end
 end

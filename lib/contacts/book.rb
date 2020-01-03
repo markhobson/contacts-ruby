@@ -13,13 +13,13 @@ module Contacts
     end
 
     def each
-      @contacts.each do |contact|
+      @contacts.sort.each do |contact|
         yield contact
       end
     end
 
     def search(query)
-      results = @contacts.select do |contact|
+      results = select do |contact|
         contact.name.downcase =~ query
       end
       Book.new(results)
@@ -30,13 +30,13 @@ module Contacts
     end
 
     def list
-      @contacts.each_with_index do |contact, index|
+      each_with_index do |contact, index|
         puts "#{index + 1}. #{contact.name}"
       end
     end
 
     def details(index)
-      @contacts[index].details
+      to_a[index].details
     end
 
     def load(filename)
