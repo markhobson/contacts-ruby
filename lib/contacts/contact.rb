@@ -7,5 +7,10 @@ module Contacts
       @name = name
       @mobile = mobile
     end
+
+    def details
+      puts "  Name: #{@name}"
+      puts "Mobile: #{@mobile}"
+    end
   end
 end

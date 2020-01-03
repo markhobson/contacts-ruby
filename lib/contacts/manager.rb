@@ -20,10 +20,12 @@ module Contacts
       end
 
       def prompt
-        print "\n(L)ist, (O)pen, (S)ave, (Q)uit? "
+        print "\n(L)ist, (D)etails, (O)pen, (S)ave, (Q)uit? "
         case gets.upcase.strip
           when "L"
             list
+          when "D"
+            details
           when "O"
             open
           when "S"
@@ -33,6 +35,13 @@ module Contacts
           else
             puts "I'm sorry, I cannot do that."
         end
+      end
+
+      def details
+        print "Number? "
+        number = gets.strip.to_i
+        puts "== Contact =="
+        @book.details(number - 1)
       end
 
       def open

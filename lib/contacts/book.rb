@@ -23,9 +23,13 @@ module Contacts
     end
 
     def list
-      @contacts.each do |contact|
-        puts contact.name
+      @contacts.each_with_index do |contact, index|
+        puts "#{index + 1}. #{contact.name}"
       end
+    end
+
+    def details(index)
+      @contacts[index].details
     end
 
     def load(filename)
