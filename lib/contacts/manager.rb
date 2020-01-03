@@ -20,12 +20,14 @@ module Contacts
       end
 
       def prompt
-        print "\n(L)ist, (D)etails, (O)pen, (S)ave, (Q)uit? "
+        print "\n(L)ist, (D)etails, (F)ind, (O)pen, (S)ave, (Q)uit? "
         case gets.upcase.strip
           when "L"
             list
           when "D"
             details
+          when "F"
+            find
           when "O"
             open
           when "S"
@@ -41,6 +43,19 @@ module Contacts
         number = get_index
         puts "\n== Contact =="
         @book.details(number - 1)
+      end
+
+      def find
+        print "Query? "
+        query = /#{gets.strip.downcase}/
+        results = @book.search(query)
+
+        if results.count > 0
+          puts "\n== Matches =="
+          results.list
+        else
+          puts "No matches."
+        end
       end
 
       def open

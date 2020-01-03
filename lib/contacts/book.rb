@@ -4,8 +4,8 @@ module Contacts
   class Book
     include Enumerable
 
-    def initialize
-      @contacts = []
+    def initialize(contacts = [])
+      @contacts = contacts
     end
 
     def add(contact)
@@ -16,6 +16,13 @@ module Contacts
       @contacts.each do |contact|
         yield contact
       end
+    end
+
+    def search(query)
+      results = @contacts.select do |contact|
+        contact.name.downcase =~ query
+      end
+      Book.new(results)
     end
 
     def clear
