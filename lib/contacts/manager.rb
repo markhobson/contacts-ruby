@@ -20,7 +20,7 @@ module Contacts
       end
 
       def prompt
-        print "\n(L)ist, (D)etails, (F)ind, (O)pen, (S)ave, (Q)uit? "
+        print "\n(L)ist, (D)etails, (F)ind, (A)dd, (O)pen, (S)ave, (Q)uit? "
         case gets.upcase.strip
           when "L"
             list
@@ -28,6 +28,8 @@ module Contacts
             details
           when "F"
             find
+          when "A"
+            add
           when "O"
             open
           when "S"
@@ -55,6 +57,13 @@ module Contacts
         else
           puts "No matches."
         end
+      end
+
+      def add
+        name = prompt_s "Name?"
+        mobile = prompt_s "Mobile?"
+        @book.add Contact.new(name, mobile)
+        puts "Contact #{name} added."
       end
 
       def open
