@@ -40,15 +40,14 @@ module Contacts
       end
 
       def details
-        number = get_index
+        number = prompt_i "Number?"
         puts "\n== Contact =="
         @book.details(number - 1)
       end
 
       def find
-        print "Query? "
-        query = /#{gets.strip.downcase}/
-        results = @book.search(query)
+        query = prompt_s "Query?"
+        results = @book.search(/#{query.downcase}/)
 
         if results.count > 0
           puts "\n== Matches =="
@@ -59,13 +58,13 @@ module Contacts
       end
 
       def open
-        filename = get_filename
+        filename = prompt_s "Filename?"
         @book.load(filename)
         puts "Opened #{filename}"
       end
 
       def save
-        filename = get_filename
+        filename = prompt_s "Filename?"
         @book.save(filename)
         puts "Saved #{filename}"
       end
@@ -75,14 +74,13 @@ module Contacts
         @running = false
       end
 
-      def get_index
-        print "Number? "
-        gets.strip.to_i - 1
+      def prompt_s(prompt)
+        print "#{prompt} "
+        gets.strip
       end
 
-      def get_filename
-        print "Filename? "
-        gets.strip
+      def prompt_i(prompt)
+        prompt_s(prompt).to_i
       end
   end
 end
