@@ -38,22 +38,19 @@ module Contacts
       end
 
       def details
-        print "Number? "
-        number = gets.strip.to_i
+        number = get_index
         puts "\n== Contact =="
         @book.details(number - 1)
       end
 
       def open
-        print "Filename? "
-        filename = gets.strip
+        filename = get_filename
         @book.load(filename)
         puts "Opened #{filename}"
       end
 
       def save
-        print "Filename? "
-        filename = gets.strip
+        filename = get_filename
         @book.save(filename)
         puts "Saved #{filename}"
       end
@@ -61,6 +58,16 @@ module Contacts
       def quit
         puts "Bye!"
         @running = false
+      end
+
+      def get_index
+        print "Number? "
+        gets.strip.to_i - 1
+      end
+
+      def get_filename
+        print "Filename? "
+        gets.strip
       end
   end
 end
