@@ -15,7 +15,7 @@ module Contacts
     private
 
       def list
-        puts "== Book =="
+        puts "\n== Book =="
         @book.list
       end
 
@@ -40,7 +40,7 @@ module Contacts
       def details
         print "Number? "
         number = gets.strip.to_i
-        puts "== Contact =="
+        puts "\n== Contact =="
         @book.details(number - 1)
       end
 
